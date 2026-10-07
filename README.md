@@ -423,6 +423,7 @@ Ideas for taking the project further, roughly from quickest wins to larger proje
 - **Friendly error messages** when a key is missing, a quota is hit or the network is down, with a clear "what to do next".
 - **Store user data in the user's app-data folder** (database, outputs, metrics) instead of beside the program, so upgrades never overwrite it.
 - **Automatic clean-up** or an in-app "clear old images" button for `img_gen/outputs/`.
+- **More features to the Editor Page** Polish the user interface and add more useful features.
 
 ### Performance and cost
 - **Run independent steps in parallel.** Image generation and caption writing do not depend on each other and could run at the same time, shortening waiting time.
