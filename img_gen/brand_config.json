@@ -1,0 +1,63 @@
+{
+  "_comment": "Template brand/product configuration. This is a STARTING STRUCTURE, not a guaranteed match to your current img_gen/data.py field names — see the integration notes at the bottom of brand_config_loader.py for how to align the keys below with whatever your generator.py/prompt_builder.py currently expect.",
+
+  "brand_identity": {
+    "name": "Traybakes",
+    "positioning": "UK handmade cake and traybake company, mid-market wholesale — not a luxury/artisan-only brand",
+    "audience": "Wholesale buyers and independent cafes deciding whether to stock or reorder",
+    "tone_keywords": ["consistent", "reliable", "handmade", "no-nonsense", "trade-focused"],
+    "avoid_keywords": ["luxury", "indulgence", "decadent", "premium lifestyle"]
+  },
+
+  "photography_style": {
+    "lighting": "natural daylight, slightly warm white balance",
+    "setting": "bakery or trade-counter context, not a styled lifestyle studio",
+    "composition": "product-forward, minimal props, no excessive styling",
+    "avoid": ["overly staged luxury food photography", "studio-glam lighting"]
+  },
+
+  "format_context": {
+    "instagram_post": {"aspect_ratio": "1:1", "notes": "square crop, product-centered"},
+    "facebook_post": {"aspect_ratio": "1.91:1", "notes": "landscape, room for text overlay"},
+    "poster": {"aspect_ratio": "2:3", "notes": "portrait, high resolution for print"},
+    "banner": {"aspect_ratio": "3:1", "notes": "wide, minimal text, single product focus"},
+    "a4_portrait": {"aspect_ratio": "1:1.414", "notes": "print-ready portrait"},
+    "a4_landscape": {"aspect_ratio": "1.414:1", "notes": "print-ready landscape"},
+    "a5_portrait": {"aspect_ratio": "1:1.414", "notes": "print-ready portrait, smaller format"},
+    "a5_landscape": {"aspect_ratio": "1.414:1", "notes": "print-ready landscape, smaller format"}
+  },
+
+  "products": {
+    "flapjacks": {
+      "display_name": "Flapjacks",
+      "description": "Handmade oat flapjacks, baked in small batches",
+      "presentation_notes": "shown whole and in cut portions, visible oat texture"
+    },
+    "brownies": {
+      "display_name": "Brownies",
+      "description": "Handmade chocolate brownies",
+      "presentation_notes": "shown cut to reveal fudgy interior texture"
+    },
+    "shortbread": {
+      "display_name": "Shortbread",
+      "description": "Traditional handmade shortbread",
+      "presentation_notes": "shown stacked or fanned, visible crumb texture"
+    },
+    "traybakes_general": {
+      "display_name": "Traybakes",
+      "description": "General traybake range",
+      "presentation_notes": "shown in trade packaging where relevant"
+    }
+  },
+
+  "presentations": {
+    "wholesale_trade": {
+      "context": "trade counter or delivery crate setting",
+      "notes": "communicates volume/consistency, not single-serve indulgence"
+    },
+    "cafe_display": {
+      "context": "cafe counter display setting",
+      "notes": "communicates how the product looks to an end customer in a cafe"
+    }
+  }
+}

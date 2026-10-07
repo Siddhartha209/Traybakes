@@ -1,0 +1,35 @@
+{
+  "goal": "generate market research and caption Products to feature: All Butter Flapjack With Choc. Product type: Service Tray.",
+  "competitors": [],
+  "insights": {
+    "patterns": [],
+    "gaps": [],
+    "opportunities": []
+  },
+  "actions": {
+    "recommended_angles": [],
+    "recommended_content_themes": [],
+    "highest_priority_opportunity": null
+  },
+  "meta": {
+    "node_errors": [
+      {
+        "agent": "discover",
+        "error": "Unauthorized: missing or invalid API key."
+      },
+      {
+        "agent": "trends",
+        "error": "Unauthorized: missing or invalid API key."
+      },
+      {
+        "agent": "patterns",
+        "error": "Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}"
+      },
+      {
+        "agent": "gaps",
+        "error": "Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}"
+      }
+    ],
+    "has_errors": true
+  }
+}
