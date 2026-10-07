@@ -1,7 +1,6 @@
 # Traybakes AI Marketing Assistant
 
-A desktop app that uses a team of AI agents to create on-brand marketing content. Describe what you want to promote, and the app researches competitors, writes captions, generates images and lets you fine-tune the result in a built-in editor.
-
+A desktop app that uses a team of AI agents to create on-brand marketing content. Describe what you want to promote, and the app researches competitors, writes captions, generates images and lets you fine-tune the result in a built-in editor. Designed to work with short and vague prompts as well as longer descriptive prompts.
 
 ---
 
@@ -91,21 +90,12 @@ Review, rate and edit in the app  -->  Export image
 
 ## Quick start
 
-Pick the route that matches you.
-
-**A. I just want to use the app (Windows)**
+**.I just want to use the app (Windows)**
 
 1. Get the packaged `Traybakes` folder from the developer.
 2. [Get your three API keys](#get-your-api-keys-step-by-step).
 3. Create a `.env` file **in the same folder as `Traybakes.exe`** ([instructions](#where-to-put-your-keys)).
-4. Double-click `Traybakes.exe`.
-
-**B. I want to run or edit the code**
-
-1. Install Python 3.10 or newer.
-2. [Run from source](#run-from-source).
-
----
+4. Double-click `dist/Traybakes/Traybakes.exe`.
 
 ## Get your API keys (step by step)
 
@@ -177,10 +167,9 @@ GEMINI_API_KEY=YOUR_GEMINI_KEY
 | How you run the app | Put `.env` here |
 |---|---|
 | Packaged app (`Traybakes.exe`) | In the **same folder as `Traybakes.exe`** |
-| From source (`python main.py`) | In the **project root**, next to `main.py` |
 
 ```
-Traybakes/
+dist/Traybakes/
 ├── Traybakes.exe
 ├── .env              <-- here
 └── _internal/
@@ -196,72 +185,12 @@ Notepad likes to secretly rename files to `.env.txt`, which the app will not fin
 
 Alternatively, in Notepad choose **File > Save As**, set **Save as type** to **All files**, and type `.env` as the file name.
 
-### Creating the file on macOS or Linux
-
-```bash
-cp .env.example .env
-nano .env        # paste your keys, save, exit
-```
-
 ### Checking it worked
 
 Launch the app and generate something small. If a key is missing or wrong, see [Troubleshooting](#troubleshooting).
 
 ---
 
-## Run from source
-
-You need **Python 3.10 or newer** (the project was developed on Python 3.14) and Git if you are cloning from GitHub.
-
-### 1. Get the code
-
-```bash
-git clone https://github.com/YOUR-USERNAME/YOUR-REPO.git
-cd YOUR-REPO
-```
-
-### 2. Create a virtual environment
-
-A virtual environment keeps this project's packages separate from the rest of your computer.
-
-```bash
-# Windows
-python -m venv .venv
-.venv\Scripts\activate
-
-# macOS / Linux
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-Your prompt should now start with `(.venv)`.
-
-### 3. Install the dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Add your keys
-
-Copy the example file and fill in your keys (see [Where to put your keys](#where-to-put-your-keys)):
-
-```bash
-# Windows
-copy .env.example .env
-# macOS / Linux
-cp .env.example .env
-```
-
-### 5. Start the app
-
-```bash
-python main.py
-```
-
-The window opens maximised. Run it from the project root so that relative files (such as the dashboard metrics file) are created in the right place.
-
----
 
 ## Using the app
 
@@ -272,7 +201,7 @@ The sidebar has three pages.
 1. **Describe your goal** in plain English, for example: *"Promote our vegan flapjack to independent cafés ahead of winter."*
 2. Choose a **Content type** (Instagram Post, Facebook Post, Poster or Banner) and a **Tone** (Professional, Minimal or Warm). Both are optional.
 3. Choose one or more **products** using the product picker.
-4. Optionally add a **style reference** image.
+4. Optionally add a **style reference** image (Recommended for specifying a specific background image).
 5. Click generate. Progress runs in the background, so the window stays usable.
 6. Review the **three caption options** and the **generated image**. Select the caption you prefer.
 7. Rate captions with thumbs up or down. Edit a caption if you want to change its wording. The app learns from both.
@@ -477,17 +406,10 @@ If something else goes wrong, note the exact error message shown in the app or t
 
 ## Known issues
 
-These were found while documenting the project. None stops the app working, but they are worth knowing about.
-
-- **Missing package marker:** `img_gen/init.py` should be named `__init__.py`. The code works as it is, but the standard name is safer for tools and packaging.
-- **Product naming mismatch:** the folder `img_gen/products/all_butter_flapjack_with_choc` does not match the key `all_butter_flapjack_with_chocolate` in `img_gen/data.py`, so that product's description may not be found. Rename one so they match.
-- **Settings loaded in several places:** only `img_gen/config.py` loads `.env` from the executable's folder. Other modules call `load_dotenv()` with no path. This works when the app is launched from its own folder, but is fragile.
-- **Keys required at start-up:** the Groq and Tavily clients are created as modules are imported, so a missing key stops the backend loading rather than showing a friendly message.
-- **Cost estimates are approximate:** the pricing tables in `orchestrator/orchestrator.py` are hard-coded and some model names in them don't match the models currently used. Treat dashboard costs as a guide.
-- **Output folder growth:** `img_gen/outputs/` is never cleaned up.
-- **No direct posting:** the app exports images and text for you to post yourself. It does not publish to social media.
+- **Cost estimates are approximate:** the pricing tables in `orchestrator/orchestrator.py` are hard-coded and some model names in them don't match the models currently used. Treat dashboard costs as a guide. This is due to the deprecation of a previously used model which was changed close to the deadline.
+- **No direct posting:** the app exports images and text for you to post yourself. It does not publish to social media after human review.
 - **Single research cache:** only the latest research result is kept, so alternating between two different topics repeats research.
-- **Editor configuration folder:** `research_agent/.continue/` is a code-editor settings folder, not part of the app, and can be deleted.
+- **Image Generation Accuracy:** The Gemini image model struggles to preserve the fine-text of the product packaging. Maybe consider alternative/newer image models.
 
 ---
 
@@ -496,7 +418,7 @@ These were found while documenting the project. None stops the app working, but 
 Ideas for taking the project further, roughly from quickest wins to larger projects.
 
 ### Reliability and polish
-- **Fix the known issues above**, starting with the package marker, product naming and a single place that loads configuration.
+- **Fix the known issues above**, starting with the package marker, product naming and a single place that loads configuration. Consider using alternative image models that better preserve fine text.
 - **In-app settings screen** where staff paste their API keys, so nobody has to create a `.env` file by hand. Store them with the operating system's secure credential store rather than a plain text file.
 - **Friendly error messages** when a key is missing, a quota is hit or the network is down, with a clear "what to do next".
 - **Store user data in the user's app-data folder** (database, outputs, metrics) instead of beside the program, so upgrades never overwrite it.
@@ -504,37 +426,19 @@ Ideas for taking the project further, roughly from quickest wins to larger proje
 
 ### Performance and cost
 - **Run independent steps in parallel.** Image generation and caption writing do not depend on each other and could run at the same time, shortening waiting time.
-- **Better research caching:** keep several cached research results in the database, match them by topic, and allow a manual "refresh research" button.
+- **Better research caching:** keep several cached research results in the database, match them by topic, and allow a manual "refresh research" button. Older results disregarded.
 - **Usage limits and budget warnings** inside the app, so a month's spend on Gemini and Tavily is visible and capped.
-- **Live pricing and model configuration** read from a settings file rather than hard-coded.
+- **Live pricing and model configuration** read from a settings file rather than hard-coded and displayed to the live dashboard page.
 
 ### Features
 - **Publish directly** to Instagram and Facebook, with scheduling and a review step.
 - **Learn from real results:** connect post engagement data so that feedback is based on what actually performed, not only on ratings from staff.
 - **More content formats:** carousels, short video storyboards, email newsletters and product-sheet copy.
-- **Brand management:** make the brand configuration (`brand_config.json` template) drive prompts, so a second client can be set up without editing code, with logos, colours and fonts applied automatically.
+- **Brand management:** make the brand configuration (`brand_config.json` template) drive prompts, so a second client can be set up without editing code, with logos, colours and fonts applied automatically. Ensure the prompts that are inside the codebase fit the Traybakes branding.
 - **Safeguards on generated images:** automatic checks that the right product, packaging and label appear, and flagging of outputs that drift from brand style.
 - **Seasonal and calendar awareness:** suggest campaigns around holidays, trade shows and the wholesale buying calendar.
 - **Alternative providers:** a thin layer so Groq, Gemini or Tavily can be swapped for other services, or for local models, without rewriting the agents.
 
-### Quality and engineering
-- **Wider automated tests** for the orchestrator, planner, caption scoring and image selection, using mocked API calls so tests are free and fast.
-- **Continuous integration** (for example GitHub Actions) that runs the tests and builds the executable on every change.
-- **Proper installer and updates:** a Windows installer, code signing so Windows does not warn users, and a way to update the app. Builds for macOS would widen access.
-- **Logging to a file** to make problems on a client's machine easy to diagnose.
-- **Accessibility improvements** such as keyboard navigation and screen-reader labels.
 
-### Evaluation (for the research)
-- **Larger and more representative user study** with Traybakes staff and real wholesale buyers, not only students.
-- **Clearer ground-truth labelling** for research-agent accuracy, and careful wording of causal claims.
-- **Controlled comparison** of AI-assisted content against content written by hand, using real engagement or enquiry data over several weeks.
-- **Long-term test of the learning loop** to measure whether captions genuinely improve as feedback accumulates.
 
----
 
-## Acknowledgements and licence
-
-- Built in collaboration with **Traybakes**, whose product photography and brief shaped the system.
-- Developed as part of an MSc Artificial Intelligence dissertation project.
-- Product photographs and brand assets belong to Traybakes. Do not reuse them without permission.
-- **Licence:** add your chosen licence here, or state that the code is not licensed for reuse.
