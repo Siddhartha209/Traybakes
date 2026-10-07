@@ -1,8 +1,7 @@
 # Traybakes AI Marketing Assistant
 
-A desktop app that uses a team of AI agents to create on-brand marketing content for **Traybakes**, a UK wholesale handmade bakery. You describe what you want to promote, and the app researches competitors, writes captions, generates images from Traybakes' own product photography, and lets you fine-tune the result in a built-in editor.
+A desktop app that uses a team of AI agents to create on-brand marketing content. Describe what you want to promote, and the app researches competitors, writes captions, generates images and lets you fine-tune the result in a built-in editor.
 
-It was built as the artefact for the MSc Artificial Intelligence dissertation *"Design and Implementation of a Multi-Agent System for Automated Marketing"*, in collaboration with Traybakes as the client. It is designed to be usable by non-technical staff.
 
 ---
 
@@ -24,7 +23,6 @@ It was built as the artefact for the MSc Artificial Intelligence dissertation *"
 14. [Troubleshooting](#troubleshooting)
 15. [Known issues](#known-issues)
 16. [Future work](#future-work)
-17. [Acknowledgements and licence](#acknowledgements-and-licence)
 
 ---
 
