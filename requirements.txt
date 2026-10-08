@@ -1,0 +1,18 @@
+# Traybakes AI Marketing Assistant - Python dependencies
+# Install with: pip install -r requirements.txt
+# Versions are intentionally unpinned. After confirming everything works on your
+# machine, run `pip freeze > requirements.txt` inside your virtual environment to
+# lock exact versions for reproducible builds.
+
+PySide6
+python-dotenv
+groq
+langchain-groq
+langgraph
+tavily-python
+google-genai
+scikit-learn
+
+# Development and packaging
+pytest
+pyinstaller
