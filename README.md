@@ -92,7 +92,7 @@ Review, rate and edit in the app  -->  Export image
 
 **.I just want to use the app (Windows)**
 
-1. Get the packaged `Traybakes` folder from the developer.
+1. Get the packaged `Traybakes` folder from the releases page (located within the dist.zip).
 2. [Get your three API keys](#get-your-api-keys-step-by-step).
 3. Create a `.env` file **in the same folder as `Traybakes.exe`** ([instructions](#where-to-put-your-keys)).
 4. Double-click `dist/Traybakes/Traybakes.exe`.
