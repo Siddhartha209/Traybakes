@@ -406,7 +406,7 @@ If something else goes wrong, note the exact error message shown in the app or t
 
 ## Known issues
 
-- **Cost estimates are approximate:** the pricing tables in `orchestrator/orchestrator.py` are hard-coded and some model names in them don't match the models currently used. Treat dashboard costs as a guide. This is due to the deprecation of a previously used model which was changed close to the deadline.
+- **Cost estimates are approximate:** the pricing tables in `orchestrator/orchestrator.py` are hard-coded and some model names in them don't match the models currently used. Treat dashboard costs as a guide. This is due to the deprecation of a previously used model which was changed close to the deadline which affects caption regeneration.
 - **No direct posting:** the app exports images and text for you to post yourself. It does not publish to social media after human review.
 - **Single research cache:** only the latest research result is kept, so alternating between two different topics repeats research.
 - **Image Generation Accuracy:** The Gemini image model struggles to preserve the fine-text of the product packaging. Maybe consider alternative/newer image models.
