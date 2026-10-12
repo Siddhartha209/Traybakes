@@ -439,6 +439,7 @@ Ideas for taking the project further, roughly from quickest wins to larger proje
 - **Safeguards on generated images:** automatic checks that the right product, packaging and label appear, and flagging of outputs that drift from brand style.
 - **Seasonal and calendar awareness:** suggest campaigns around holidays, trade shows and the wholesale buying calendar.
 - **Alternative providers:** a thin layer so Groq, Gemini or Tavily can be swapped for other services, or for local models, without rewriting the agents.
+- **Transition from Desktop prototype to web-based system:** Allows multiple users to access the system and zero setup required for users.
 
 
 
